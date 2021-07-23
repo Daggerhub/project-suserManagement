@@ -1,7 +1,7 @@
-import react, { useState, useEffect } from 'react';
-import { Table, TableHead, TableCell, TableRow, TableBody, Button, makeStyles, FormHelperText } from '@material-ui/core'
+import { useState, useEffect } from 'react';
+import { Table, TableHead, TableCell, TableRow, TableBody, Button, makeStyles} from '@material-ui/core'
 import { fetchUsers } from '../api/index';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
 
@@ -67,7 +67,7 @@ const Users = () => {
                         {/* <TableCell>{user.email}</TableCell> */}
                         {/* <TableCell>{user.phone}</TableCell> */}
                         <TableCell>
-                            <Button color="primary" variant="contained" style={{marginRight:10}}>Edit</Button>
+                            <Button color="primary" variant="contained" style={{marginRight:10}} component={Link} to={`/edit/${user._id}`}>Edit</Button>
                             <Button color="secondary" variant="contained" style={{marginRight:10}}>Delete</Button>
                             <Button color="secondary" variant="contained">View</Button>
                         </TableCell>

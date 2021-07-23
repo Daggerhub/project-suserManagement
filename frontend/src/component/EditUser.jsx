@@ -1,7 +1,8 @@
+
 import { useState } from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from '@material-ui/core';
-import { createUser } from '../api/index';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { updateUser } from '../api';
 
 const initialValue = {
     name: '',
@@ -19,9 +20,10 @@ const useStyles = makeStyles({
     }
 })
 
-const AddUser = () => {
+const EditUser = () => {
     const [user, setUser] = useState(initialValue);
     const { name, email, phone } = user;
+    const { id } = useParams();
     const classes = useStyles();
     let history = useHistory();
 
@@ -30,31 +32,31 @@ const AddUser = () => {
         setUser({...user, [e.target.name]: e.target.value})
     }
 
-    const addUserDetails = async() => {
-        await createUser(user);
+    const editUserDetails = async() => {
+        await updateUser(id, user);
         history.push('/');
     }
 
     return (
         <FormGroup className={classes.container}>
-            <Typography variant="h4">Add User</Typography>
+            <Typography variant="h4">Edit Information</Typography>
             <FormControl>
                 <InputLabel htmlFor="my-input">Name</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='name' value={name} id="my-input" />
+                <Input onChange={(e) => onValueChange(e)} name='name' value={name} id="my-input" aria-describedby="my-helper-text" />
             </FormControl>
             <FormControl>
                 <InputLabel htmlFor="my-input">Email</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='email' value={email} id="my-input"/>
+                <Input onChange={(e) => onValueChange(e)} name='email' value={email} id="my-input" aria-describedby="my-helper-text" />
             </FormControl>
             <FormControl>
                 <InputLabel htmlFor="my-input">Phone</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='phone' value={phone} id="my-input" />
+                <Input onChange={(e) => onValueChange(e)} name='phone' value={phone} id="my-input" aria-describedby="my-helper-text" />
             </FormControl>
             <FormControl>
-                <Button variant="contained" color="primary" onClick={() => addUserDetails()}>Add User</Button>
+                <Button variant="contained" color="primary" onClick={() => editUserDetails()}>Edit User</Button>
             </FormControl>
         </FormGroup>
     )
 }
 
-export default AddUser;
+export default EditUser;
