@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    color: '#FFFFFF',
+    textDecoration: 'none',
+    fontSize: 20
   },
   tabs: {
     color: '#FFFFFF',
@@ -30,9 +33,8 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
+        <NavLink className={classes.title} to="/" exact>User Management</NavLink>
+
           <NavLink className={classes.tabs} to="/add" exact>All Users</NavLink>
         </Toolbar>
       </AppBar>

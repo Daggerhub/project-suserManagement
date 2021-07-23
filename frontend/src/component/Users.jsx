@@ -69,7 +69,7 @@ const Users = () => {
                         <TableCell>
                             <Button color="primary" variant="contained" style={{marginRight:10}} component={Link} to={`/edit/${user._id}`}>Edit</Button>
                             <Button color="secondary" variant="contained" style={{marginRight:10}} onClick={()=>deleteUserData(user._id)}>Delete</Button>
-                            <Button color="secondary" variant="contained">View</Button>
+                            <Button color="secondary" variant="contained" component={Link} to={`/${user._id}`}>View</Button>
                         </TableCell>
                     </TableRow>
                 ))}
