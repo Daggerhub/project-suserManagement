@@ -33,7 +33,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <NavLink className={classes.tabs} to="add" exact>All Users</NavLink>
+          <NavLink className={classes.tabs} to="/add" exact>All Users</NavLink>
         </Toolbar>
       </AppBar>
     </div>
